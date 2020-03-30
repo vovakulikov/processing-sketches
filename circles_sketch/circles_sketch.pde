@@ -1,12 +1,36 @@
+// Daniel Shiffman
+// http://youtube.com/thecodingtrain
+// http://codingtra.in
+//
+// Coding Challenge #24: Perlin Noise Flow  Field
+// https://youtu.be/BjoM9oKOAKY
+
+FlowField flowfield;
+ArrayList<Particle> particles;
+
+boolean debug = false;
+
 void setup() {
-  size(1080, 620);
+  size(1200, 800);
+  
+  flowfield = new FlowField(100);
+  flowfield.update();
+
+  particles = new ArrayList<Particle>();
+  for (int i = 0; i < 1000; i++) {
+    PVector start = new PVector(random(width), random(height));
+    particles.add(new Particle(start, random(2, 8)));
+  }
+  background(255);
 }
 
 void draw() {
-  if (mousePressed) {
-    fill(0);
-  } else {
-    fill(255);
+  flowfield.update();
+  
+  if (debug) flowfield.display();
+  
+  for (Particle p : particles) {
+    p.follow(flowfield);
+    p.run();
   }
-  ellipse(mouseX, mouseY, 80, 80);
 }

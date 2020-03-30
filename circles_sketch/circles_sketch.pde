@@ -1,9 +1,3 @@
-// Daniel Shiffman
-// http://youtube.com/thecodingtrain
-// http://codingtra.in
-//
-// Coding Challenge #24: Perlin Noise Flow  Field
-// https://youtu.be/BjoM9oKOAKY
 
 FlowField flowfield;
 ArrayList<Particle> particles;

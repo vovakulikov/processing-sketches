@@ -36,12 +36,12 @@ public class Particle {
     hue+=hueSpeed;
     float max = map(cos(hue), -1, 1, 0, 200);
     float d = pos.heading();
-    float r = map(sin(d), -1, 1, 0, 200) ; //<>//
+    float r = map(sin(d), -1, 1, 0, max) ; //<>//
     float g = map(cos(d), -1, 1, 0, 200);
     float b = map(sin(d) + cos(d), -1, 1, 0, 200);
     
-    stroke(r, g, b, 5);
-    strokeWeight(1);
+    stroke(r, 200, 150, 2);
+    strokeWeight(2);
     line(pos.x, pos.y, previousPos.x, previousPos.y);
     //point(pos.x, pos.y);
     updatePreviousPos();

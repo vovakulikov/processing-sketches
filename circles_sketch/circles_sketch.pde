@@ -7,7 +7,7 @@ boolean debug = false;
 void setup() {
   size(1200, 800);
   
-  flowfield = new FlowField(10);
+  flowfield = new FlowField(100);
   flowfield.update();
 
   particles = new ArrayList<Particle>();

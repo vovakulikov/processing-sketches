@@ -1,9 +1,3 @@
-// Daniel Shiffman
-// http://youtube.com/thecodingtrain
-// http://codingtra.in
-//
-// Coding Challenge #24: Perlin Noise Flow  Field
-// https://youtu.be/BjoM9oKOAKY
 
 public class Particle {
   PVector pos;
@@ -11,6 +5,10 @@ public class Particle {
   PVector acc;
   PVector previousPos;
   float maxSpeed;
+  float hue = 0;
+  float hueSpeed = 0.01;
+  float hueRange = 20;
+  float baseHue = 240;
    
   Particle(PVector start, float maxspeed) {
     maxSpeed = maxspeed;
@@ -34,7 +32,15 @@ public class Particle {
     acc.add(force); 
   }
   void show() {
-    stroke(0, 5);
+    colorMode(HSB);
+    hue+=hueSpeed;
+    float max = map(cos(hue), -1, 1, 0, 200);
+    float d = pos.heading();
+    float r = map(sin(d), -1, 1, 0, 200) ; //<>//
+    float g = map(cos(d), -1, 1, 0, 200);
+    float b = map(sin(d) + cos(d), -1, 1, 0, 200);
+    
+    stroke(r, g, b, 5);
     strokeWeight(1);
     line(pos.x, pos.y, previousPos.x, previousPos.y);
     //point(pos.x, pos.y);

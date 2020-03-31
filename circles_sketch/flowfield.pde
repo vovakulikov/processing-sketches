@@ -1,9 +1,3 @@
-// Daniel Shiffman
-// http://youtube.com/thecodingtrain
-// http://codingtra.in
-//
-// Coding Challenge #24: Perlin Noise Flow  Field
-// https://youtu.be/BjoM9oKOAKY
 
 public class FlowField {
   PVector[] vectors;
@@ -19,9 +13,9 @@ public class FlowField {
     vectors = new PVector[cols * rows];
   }
   void update() {
-    float xoff = 0;
+    float yoff = 0;
     for (int y = 0; y < rows; y++) { 
-      float yoff = 0;
+      float xoff = 0;
       for (int x = 0; x < cols; x++) {
         float angle = noise(xoff, yoff, zoff) * TWO_PI * 4;
         
@@ -41,9 +35,10 @@ public class FlowField {
       for (int x = 0; x < cols; x++) {
         int index = x + y * cols;
         PVector v = vectors[index];
-        
-        stroke(0, 0, 0, 480);
+       
         strokeWeight(1);
+        stroke(0, 0, 0, 480);
+      
         pushMatrix();
         translate(x * scl, y * scl);
         rotate(v.heading());
